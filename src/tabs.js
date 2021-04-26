@@ -5,7 +5,7 @@ const Tabs = ({ data, tabsOnBottom, disabled = null }) => {
 
   const renderTabs = () => {
     return data.map((tab, index) => {
-      console.log("idx: ", index);
+
       const isActive = activeIndex === index;
       const isDisabled = disabled.includes(index);
       return (

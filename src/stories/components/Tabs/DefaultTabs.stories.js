@@ -1,14 +1,11 @@
-import React from "react";
-import { DefaultTabs, TabsArray, ContextTabs } from "./Tabs";
-import { Tabs } from '../../../components';
-import { dataObj, data } from "./data";
+import React from 'react';
+import { Tabs, CtxTabs } from '../../../components';
+import { dataObj, data } from './data';
+import '../../tailwind.output.css';
 
 export default {
-  title: "Compound Components/Tabs",
-  component: DefaultTabs,
-  // argTypes: {
-  //   data: { control: "object" },
-  // },
+  title: 'Compound Components/Tabs',
+  component: Tabs,
 };
 
 const Template = (args, { argTypes }) => {
@@ -35,13 +32,36 @@ Default.args = {
   data: dataObj,
 };
 
-const ArrayTemplate = (args, { argTypes }) => <TabsArray {...args} />;
+const ArrayTemplate = (args, { argTypes }) => <Tabs.DataTabs data={data} />;
 export const TabsWithArray = ArrayTemplate.bind({});
 TabsWithArray.args = {
   data: data,
 };
 
-const ContextTemplate = (args, { argTypes }) => <ContextTabs {...args} />;
+const ContextTemplate = (args, { argTypes }) => {
+  return (
+    <div className='flex align-center justify-center mt-10'>
+      <CtxTabs>
+        <div className='border-blue-300 border-r-4 flex flex-col float-left mr-11 w-20'>
+          <CtxTabs.TabList>
+            <CtxTabs.Tab>{dataObj.business.label}</CtxTabs.Tab>
+            <CtxTabs.Tab>{dataObj.settings.label}</CtxTabs.Tab>
+            <CtxTabs.Tab>{dataObj.bio.label}</CtxTabs.Tab>
+            <CtxTabs.Tab isDisabled>{dataObj.auto.label}</CtxTabs.Tab>
+          </CtxTabs.TabList>
+        </div>
+        <div>
+          <CtxTabs.TabPanels>
+            <CtxTabs.TabPanel>{dataObj.business.content}</CtxTabs.TabPanel>
+            <CtxTabs.TabPanel>{dataObj.settings.content}</CtxTabs.TabPanel>
+            <CtxTabs.TabPanel>{dataObj.bio.content}</CtxTabs.TabPanel>
+            <CtxTabs.TabPanel>{dataObj.auto.content}</CtxTabs.TabPanel>
+          </CtxTabs.TabPanels>
+        </div>
+      </CtxTabs>
+    </div>
+  );
+};
 export const TabsWithContext = ContextTemplate.bind({});
 TabsWithContext.args = {
   dataObj,

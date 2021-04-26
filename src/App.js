@@ -1,17 +1,18 @@
 // Dependencies
-import React from "react";
-// import Tabs from "./tabs";
-import { Tabs, CtxTabs } from "./components";
-import { data, dataObj } from "./data";
-import { FcSettings, FcBusinesswoman, FcBiohazard, FcAutomotive } from "react-icons/fc";
+import React from 'react';
+import Tabs from './tabs';
+import { CtxTabs } from './components';
+import { data, dataObj } from './data';
+import { FcSettings, FcBusinesswoman, FcBiohazard, FcAutomotive } from 'react-icons/fc';
 // Styles
-import "./tailwind.output.css";
+import './tailwind.output.css';
 
 const App = () => {
   return (
     <div className='min-h-screen '>
-      <h2 className='text-center text-4xl font-bold text-blue-900'>TailwindCSS + React</h2>
-      <Tabs>
+      <h2 className='text-center text-4xl font-bold text-blue-900'>Some Tabs</h2>
+      <Tabs data={data} />
+      {/* <Tabs>
         <Tabs.TabList>
           <Tabs.Tab>{dataObj.business.label}</Tabs.Tab>
           <Tabs.Tab isDisabled>{dataObj.settings.label}</Tabs.Tab>
@@ -24,7 +25,7 @@ const App = () => {
           <Tabs.TabPanel>{dataObj.bio.content}</Tabs.TabPanel>
           <Tabs.TabPanel>{dataObj.auto.content}</Tabs.TabPanel>
         </Tabs.TabPanels>
-      </Tabs>
+      </Tabs> */}
       <hr />
       <hr />
       {/* <Tabs.DataTabs data={data} /> */}

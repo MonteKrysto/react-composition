@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
 /**
- * The reponsibility of 'Tabs' is to create and update state to its
- * children components
+ * Tabs is the main container for a tabbed component.
+ * It is reponsible for creating an API that creates and controls all the state and
+ * props necessary to bind an active tab with its corresponding data panel without outside assistance
+ * from the developer implementing the `<Tabs />` component.
+ *
+ * It does this by creating state via `useState()` and an `onSelect()` handler for updating the active tab.
+ * The children components are then cloned ,adding in the `activeIndex` and `onSelect()` properties and passed
+ * down to the children tab components - TabList, Tab, TabPanels, TabPanel
  *
  * @param {object} children
  */
