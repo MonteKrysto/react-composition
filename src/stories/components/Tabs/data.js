@@ -31,7 +31,7 @@ export const dataObj = {
     id: 1,
     label: <FcBusinesswoman />,
     content:
-      "BUSINESS WOMAN CONTENT: She's a hardworker, working 9-5 like Dolly, a weekend warrior throwing back a bottle hooch like a good ol' boy, and she will KICK YOUR ASS!",
+      "BUSINESS WOMAN CONTENT: She's a hard worker, working 9-5 like Dolly, a weekend warrior throwing back a bottle hooch like a good ol' boy, and she will KICK YOUR ASS!",
   },
   settings: {
     id: 2,
