@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { TabsProvider, useTabs } from "./tabsProvider";
 
 /**
  * The reponsibility of 'Tabs' is to create and update state to its
@@ -6,55 +7,46 @@ import React, { useState } from "react";
  *
  * @param {object} children
  */
-const Tabs = ({ children, ...rest }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const CtxTabs = ({ children, ...rest }) => {
+  return (
+    <TabsProvider>
+      <CtxTabsMain {...rest}>{children}</CtxTabsMain>
+    </TabsProvider>
+  );
+};
 
-  const onSelect = index => {
-    setActiveIndex(prevState => index);
-  };
-
-  /**
-   * We clone the children being passed in and create new clones of them
-   * with adding the ability to get the currently active tab as well as
-   * update the active tab via the activeIndex and onSelect state updater props
-   */
-  const modifiedChildren = React.Children.map(children, (child, index) => {
-    return React.cloneElement(child, {
-      activeIndex,
-      onSelect,
-    });
-  });
-
-  // Return the *modifiedChildren* with the new props - activeIndex and onSelect
+const CtxTabsMain = ({ children, ...rest }) => {
   return (
     <div
       {...rest}
-      className='block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500'
+      className='block w-5/12 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500'
     >
-      {modifiedChildren}
+      {children}
     </div>
   );
 };
 
 /**
- * TabList now has access to the active tab index as well as the onSelect handler to set
+ * TabList now has access to the active tab index as well as the onSelectTab handler to set
  * the active tab.
  * We once again clone the children to add the isActive and onTabSelect props down to the
  * Tab components
  * @param {object} children
  * @param {number} activeIndex - the currently active tab index
- * @param {function} onSelect - the function to change the active tab index
+ * @param {function} onSelectTab - the function to change the active tab index
  */
-const TabList = ({ children, activeIndex, onSelect, ...rest }) => {
+const TabList = ({ children, ...rest }) => {
+  const { activeIndex, onSelectTab } = useTabs();
+
   const modifiedChildren = React.Children.map(children, (child, index) => {
     return React.cloneElement(child, {
       isActive: index === activeIndex,
-      onTabSelect: () => onSelect(index),
+      onTabSelect: () => onSelectTab(index),
     });
   });
 
   return (
-    <div className='tabs flex flex-row' {...rest}>
+    <div className='tabs' {...rest}>
       {modifiedChildren}
     </div>
   );
@@ -77,7 +69,7 @@ const Tab = ({ children, isActive, onTabSelect, isDisabled, ...rest }) => {
           : isActive
           ? "cursor-pointer border-indigo-500 text-indigo-600 hover:border-gray-900"
           : "cursor-pointer hover:border-gray-300"
-      } text-6xl mr-56 border-transparent whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+      } w-11/12 text-6xl mr-56 border-transparent whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
       onClick={() => (isDisabled ? null : onTabSelect())}
       {...rest}
     >
@@ -88,12 +80,14 @@ const Tab = ({ children, isActive, onTabSelect, isDisabled, ...rest }) => {
 
 /**
  * The TabPanels gets the activeIndex from the Tabs component, as it is one of its children which have been modified
- * each child has access to activeIndex as well as onSelect but that is not needed here
+ * each child has access to activeIndex as well as onSelectTab but that is not needed here
  * @param {object} children
  * @param {number} activeIndex - the currently active tab index
  * @returns
  */
-const TabPanels = ({ children, activeIndex, ...rest }) => {
+const TabPanels = ({ children, ...rest }) => {
+  const { activeIndex } = useTabs();
+
   return (
     <div className='panels mt-16 mb-16' {...rest}>
       {children[activeIndex]}
@@ -115,7 +109,7 @@ const TabPanel = ({ children, ...rest }) => children;
  */
 const DataTabs = data => {
   return (
-    <Tabs>
+    <CtxTabs>
       <TabList>
         {data.data.map(t => (
           <Tab>{t.label}</Tab>
@@ -126,14 +120,14 @@ const DataTabs = data => {
           <TabPanel>{t.content}</TabPanel>
         ))}
       </TabPanels>
-    </Tabs>
+    </CtxTabs>
   );
 };
 
-Tabs.TabList = TabList;
-Tabs.Tab = Tab;
-Tabs.TabPanels = TabPanels;
-Tabs.TabPanel = TabPanel;
-Tabs.DataTabs = DataTabs;
+CtxTabs.TabList = TabList;
+CtxTabs.Tab = Tab;
+CtxTabs.TabPanels = TabPanels;
+CtxTabs.TabPanel = TabPanel;
+CtxTabs.DataTabs = DataTabs;
 
-export default Tabs;
+export default CtxTabs;

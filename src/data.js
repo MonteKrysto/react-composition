@@ -1,34 +1,29 @@
-import {
-  FcSettings,
-  FcBusinesswoman,
-  FcBiohazard,
-  FcAutomotive
-} from "react-icons/fc";
+import { FcSettings, FcBusinesswoman, FcBiohazard, FcAutomotive } from "react-icons/fc";
 
 export const data = [
   {
     id: 1,
     label: <FcBusinesswoman />,
     content:
-      "Association football, more commonly known as football or soccer, is a team sport played between two teams of eleven players with a spherical ball. It is played by 250 million players in over 200 countries and dependencies, making it the world's most popular sport."
+      "BUSINESS WOMAN CONTENT: She's a hardworker, working 9-5 like Dolly, a weekend warrior throwing back a bottle hooch like a good ol' boy, and she will KICK YOUR ASS!",
   },
   {
     id: 2,
     label: <FcSettings />,
     content:
-      "Baseball is a bat-and-ball game played between two opposing teams who take turns batting and fielding. The game proceeds when a player on the fielding team, called the pitcher, throws a ball which a player on the batting team tries to hit with a bat."
+      "SETTINGS CONTENT:  Wouldn't be nice if there was a config file for you life?? I mean, just set some settings and you're good to go, change at any time!",
   },
   {
     id: 3,
     label: <FcBiohazard />,
-    content:
-      "Tennis is a racket sport that can be played individually against a single opponent (singles) or between two teams of two players each (doubles). Each player uses a tennis racket that is strung with cord to strike a hollow rubber ball covered with felt over or around a net and into the opponent's court."
+    content: "BIOHAZARD:  This shit'll kill ya!  Stay away!",
   },
   {
     id: 4,
     label: <FcAutomotive />,
-    content: "Cycling is the best sport in the world"
-  }
+    content:
+      "AUTO:  Who reigns supreme Chevy or Ford?!  I think we'll have to have a throwdown between Sarkhan 'The Troll' and Joseph 'JB GOMEZ from the Streets' to find out!",
+  },
 ];
 
 export const dataObj = {
@@ -36,23 +31,23 @@ export const dataObj = {
     id: 1,
     label: <FcBusinesswoman />,
     content:
-      "Association football, more commonly known as football or soccer, is a team sport played between two teams of eleven players with a spherical ball. It is played by 250 million players in over 200 countries and dependencies, making it the world's most popular sport."
+      "BUSINESS WOMAN CONTENT: She's a hardworker, working 9-5 like Dolly, a weekend warrior throwing back a bottle hooch like a good ol' boy, and she will KICK YOUR ASS!",
   },
   settings: {
     id: 2,
     label: <FcSettings />,
     content:
-      "Baseball is a bat-and-ball game played between two opposing teams who take turns batting and fielding. The game proceeds when a player on the fielding team, called the pitcher, throws a ball which a player on the batting team tries to hit with a bat."
+      "SETTINGS CONTENT:  Wouldn't be nice if there was a config file for you life?? I mean, just set some settings and you're good to go, change at any time!",
   },
   bio: {
     id: 3,
     label: <FcBiohazard />,
-    content:
-      "Tennis is a racket sport that can be played individually against a single opponent (singles) or between two teams of two players each (doubles). Each player uses a tennis racket that is strung with cord to strike a hollow rubber ball covered with felt over or around a net and into the opponent's court."
+    content: "BIOHAZARD:  This shit'll kill ya!  Stay away!",
   },
   auto: {
     id: 4,
     label: <FcAutomotive />,
-    content: "Cycling is the best sport in the world"
-  }
+    content:
+      "AUTO:  Who reigns supreme Chevy or Ford?!  I think we'll have to have a throwdown between Sarkhan 'The Troll' and Joseph 'JB GOMEZ from the Streets' to find out!",
+  },
 };
