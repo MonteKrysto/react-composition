@@ -1,7 +1,7 @@
 // Dependencies
 import React from 'react';
 import Tabs from './tabs';
-import { CtxTabs } from './components';
+import { CtxTabs, Player } from './components';
 import { data, dataObj } from './data';
 import { FcSettings, FcBusinesswoman, FcBiohazard, FcAutomotive } from 'react-icons/fc';
 // Styles
@@ -26,6 +26,7 @@ const App = () => {
           <Tabs.TabPanel>{dataObj.auto.content}</Tabs.TabPanel>
         </Tabs.TabPanels>
       </Tabs> */}
+      <Player />
       <hr />
       <hr />
       {/* <Tabs.DataTabs data={data} /> */}
